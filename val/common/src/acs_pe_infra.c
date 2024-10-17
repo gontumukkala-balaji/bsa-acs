@@ -52,6 +52,9 @@ uint32_t
 val_pe_create_info_table(uint64_t *pe_info_table)
 {
   gPsciConduit = pal_psci_get_conduit();
+  if (gPsciConduit == CONDUIT_NO_TABLE)
+      return ACS_STATUS_ERR;
+
   if (gPsciConduit == CONDUIT_UNKNOWN) {
       val_print(ACS_PRINT_WARN, " FADT not found, assuming SMC as PSCI conduit\n", 0);
       gPsciConduit = CONDUIT_SMC;
@@ -83,6 +86,11 @@ val_pe_create_info_table(uint64_t *pe_info_table)
       val_print(ACS_PRINT_ERR, "\n *** CRITICAL ERROR: Num PE is 0x0 ***\n", 0);
       return ACS_STATUS_ERR;
   }
+
+  #ifndef TARGET_LINUX
+  val_print(ACS_PRINT_TEST, " Primary PE: MIDR_EL1                 :    0x%llx \n",
+                                                                     val_pe_reg_read(MIDR_EL1));
+  #endif
 
   /* store primary PE index for debug message printing purposes on
      multi PE tests */
