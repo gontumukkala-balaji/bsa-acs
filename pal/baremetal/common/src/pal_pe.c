@@ -73,6 +73,36 @@ PalGetMaxMpidr()
 }
 
 /**
+  @brief  This API fills in the SMBIOS Info Table with information about the processor info
+          in the system. This is achieved by parsing the SMBIOS table.
+
+  @param  SmbiosTable  - Address where the processor information needs to be filled.
+
+  @return  None
+**/
+VOID
+pal_smbios_create_info_table(PE_SMBIOS_PROCESSOR_INFO_TABLE *SmbiosTable)
+{
+  uint32_t count = 0;
+
+  if (PeTable == NULL) {
+    return;
+  }
+
+  SmbiosTable->slot_count = platform_smbios_cfg.slot_count;
+  if (SmbiosTable->slot_count == 0) {
+    return;
+  }
+
+  while (count < SmbiosTable->slot_count) {
+    SmbiosTable->type4_info[count].processor_family =
+                platform_smbios_cfg.type4_info[count].processor_family;
+    SmbiosTable->type4_info[count].core_count = platform_smbios_cfg.type4_info[count].core_count;
+    count++;
+  }
+}
+
+/**
   @brief  Allocate memory region for secondary PE stack use. SIZE of stack for each PE
           is a #define
 

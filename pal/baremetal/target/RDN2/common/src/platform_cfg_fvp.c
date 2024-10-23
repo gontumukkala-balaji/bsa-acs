@@ -57,6 +57,13 @@ uint32_t  g_el1physkip       = FALSE;
 */
 uint32_t g_crypto_support    = TRUE;
 
+PE_SMBIOS_PROCESSOR_INFO_TABLE platform_smbios_cfg = {
+    .slot_count = PLATFORM_OVERRIDE_SMBIOS_SLOT_COUNT,
+
+    .type4_info[0].processor_family = PLATFROM_OVERRIDE_SMBIOS_SLOT0_FAMILY,
+    .type4_info[0].core_count = PLATFROM_OVERRIDE_SMBIOS_SLOT0_CORE_COUNT,
+}
+
 PE_INFO_TABLE platform_pe_cfg = {
 
     .header.num_of_pe = PLATFORM_OVERRIDE_PE_CNT,

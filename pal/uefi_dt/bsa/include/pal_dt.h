@@ -50,6 +50,9 @@ pal_peripheral_sata_create_info_table_dt(PERIPHERAL_INFO_TABLE *peripheralInfoTa
 VOID
 pal_peripheral_uart_create_info_table_dt(PERIPHERAL_INFO_TABLE *peripheralInfoTable);
 
+VOID
+pal_smbios_create_info_table(PE_SMBIOS_PROCESSOR_INFO_TABLE *SmbiosTable);
+
 int
 fdt_node_offset_by_prop_name(const void *fdt, int startoffset, const char *p_name, int p_len);
 

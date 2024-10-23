@@ -50,6 +50,21 @@ extern uint32_t g_module_array[];
 extern uint32_t g_num_modules;
 
 uint32_t
+createSmbiosInfoTable(
+)
+{
+  uint32_t Status;
+  uint64_t *SmbiosInfoTable;
+
+  SmbiosInfoTable = val_aligned_alloc(SIZE_4K, sizeof(PE_SMBIOS_PROCESSOR_INFO_TABLE) +
+                           (PLATFORM_OVERRIDE_SMBIOS_SLOT_COUNT * sizeof(PE_SMBIOS_TYPE4_INFO)));
+
+  Status = val_smbios_create_info_table(SmbiosInfoTable);
+
+  return Status;
+}
+
+uint32_t
 createPeInfoTable(
 )
 {

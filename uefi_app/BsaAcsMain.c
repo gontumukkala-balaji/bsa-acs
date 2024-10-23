@@ -246,6 +246,30 @@ createPeripheralInfoTable(
   return Status;
 }
 
+EFI_STATUS
+createSmbiosInfoTable(
+)
+{
+  UINT64   *SmbiosInfoTable;
+  EFI_STATUS Status;
+
+  Status = gBS->AllocatePool (EfiBootServicesData,
+                              SMBIOS_INFO_TBL_SZ,
+                              (VOID **) &SmbiosInfoTable);
+
+  if (EFI_ERROR(Status))
+  {
+    Print(L"Allocate Pool failed %x\n", Status);
+    return Status;
+  }
+
+  Status = val_smbios_create_info_table(SmbiosInfoTable);
+
+
+  return Status;
+}
+
+
 VOID
 freeBsaAcsMem()
 {
@@ -257,6 +281,7 @@ freeBsaAcsMem()
   val_pcie_free_info_table();
   val_iovirt_free_info_table();
   val_peripheral_free_info_table();
+  val_smbios_free_info_table();
   val_free_shared_mem();
 }
 
@@ -611,7 +636,7 @@ ShellAppMain (
   createWatchdogInfoTable();
   createPcieVirtInfoTable();
   createPeripheralInfoTable();
-
+  createSmbiosInfoTable();
   val_allocate_shared_mem();
 
   FlushImage();

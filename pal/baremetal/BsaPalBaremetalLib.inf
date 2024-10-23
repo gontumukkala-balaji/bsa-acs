@@ -74,6 +74,7 @@
   gEfiCpuArchProtocolGuid                       ## CONSUMES
   gEfiPciIoProtocolGuid                         ## CONSUMES
   gHardwareInterrupt2ProtocolGuid               ## CONSUMES
+  gEfiSmbiosProtocolGuid                        ## CONSUMES
 
 [Guids]
   gEfiAcpi20TableGuid

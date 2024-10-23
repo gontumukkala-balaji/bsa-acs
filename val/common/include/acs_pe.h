@@ -18,6 +18,9 @@
 #ifndef __ACS_PE_H__
 #define __ACS_PE_H__
 
+/* Processor Family Type 4 */
+#define PROCESSOR_FAMILY_ARMV9         0x102
+
 #define MPIDR_AFF_MASK           (0xFF00FFFFFF)
 #define INVALID_PE_INFO          (0xDEADDEAD)
 

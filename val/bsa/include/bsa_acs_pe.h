@@ -18,7 +18,6 @@
 #ifndef __BSA_ACS_PE_H__
 #define __BSA_ACS_PE_H__
 
-
 uint32_t os_c001_entry(uint32_t num_pe);
 uint32_t os_c002_entry(uint32_t num_pe);
 uint32_t os_c003_entry(uint32_t num_pe);
@@ -33,11 +32,6 @@ uint32_t os_c012_entry(uint32_t num_pe);
 uint32_t os_c013_entry(uint32_t num_pe);
 uint32_t os_c014_entry(uint32_t num_pe);
 uint32_t os_c015_entry(uint32_t num_pe);
-uint32_t os_c016_entry(uint32_t num_pe);
-uint32_t os_c017_entry(uint32_t num_pe);
-uint32_t os_c018_entry(uint32_t num_pe);
-uint32_t os_c019_entry(uint32_t num_pe);
-uint32_t os_c020_entry(uint32_t num_pe);
 
 uint32_t hyp_c001_entry(uint32_t num_pe);
 uint32_t hyp_c002_entry(uint32_t num_pe);

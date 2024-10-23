@@ -74,6 +74,9 @@ uint32_t val_pe_get_index_mpid(uint64_t mpid);
 uint32_t val_pe_install_esr(uint32_t exception_type, void (*esr)(uint64_t, void *));
 uint32_t val_pe_get_primary_index(void);
 uint64_t val_get_primary_mpidr(void);
+uint32_t val_get_pe_architecture(uint32_t index);
+uint32_t val_smbios_create_info_table(uint64_t *smbios_info_table);
+void     val_smbios_free_info_table(void);
 
 void     val_execute_on_pe(uint32_t index, void (*payload)(void), uint64_t args);
 

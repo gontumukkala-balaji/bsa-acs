@@ -114,6 +114,22 @@ typedef struct {
   PE_INFO_ENTRY  pe_info[];
 }PE_INFO_TABLE;
 
+/**
+  @brief  Instance of smbios type 4 processor info
+**/
+typedef struct {
+  UINT16 processor_family;
+  UINT16 core_count;
+} PE_SMBIOS_TYPE4_INFO;
+
+/**
+  @brief  Instance of smbios info
+**/
+typedef struct {
+  UINT32 slot_count;
+  PE_SMBIOS_TYPE4_INFO type4_info[];
+} PE_SMBIOS_PROCESSOR_INFO_TABLE;
+
 VOID     pal_pe_data_cache_ops_by_va(UINT64 addr, UINT32 type);
 
 #define CLEAN_AND_INVALIDATE  0x1

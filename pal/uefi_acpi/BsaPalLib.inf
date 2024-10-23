@@ -72,6 +72,7 @@
   gEfiPciIoProtocolGuid                         ## CONSUMES
   gHardwareInterrupt2ProtocolGuid               ## CONSUMES
   gEfiPciRootBridgeIoProtocolGuid               ## CONSUMES
+  gEfiSmbiosProtocolGuid                        ## CONSUMES
 
 [Guids]
   gEfiAcpi20TableGuid
